@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db" // db local provisória
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Surprise {
@@ -16,7 +17,6 @@ model Surprise {
   to          String
   emailFrom   String
   description String 
-  language    String   // "en-us" or "pt-br"
   password    String
   createdAt   DateTime @default(now())
   tickets     Tickets[] @relation("SurpriseTickets")

@@ -1,19 +1,19 @@
+export const services = [
+  { days: 15, price: 7.90, priceId: 'price_1Q2H1sIMvVF3VKbOizrCrelU' },
+  { days: 30, price: 12.90, priceId: 'price_1Q2H2MIMvVF3VKbO4jrnJQCB' },
+  { days: 60, price: 15.90, priceId: 'price_1Q2H30IMvVF3VKbOWT45dQTW' },
+];
+
 interface ServiceOptionsProps {
-  selectedService: number
-  setSelectedService: (service: number) => void
+  selectedService: number;
+  setSelectedService: (service: number) => void;
 }
 
 export default function ServiceOptions({ selectedService, setSelectedService }: ServiceOptionsProps) {
-  const services = [
-    { days: 30, price: 7.90 },
-    { days: 60, price: 12.90 },
-    { days: 100, price: 15.90 },
-  ]
-
   return (
-    <div className="flex flex-wrap justify-between gap-4">
+    <div className="flex flex-wrap justify-between gap-4 hover:cursor-pointer">
       {services.map((service) => (
-        <button
+        <p
           key={service.days}
           onClick={() => setSelectedService(service.days)}
           className={`flex-1 border-2 rounded px-3 py-2 text-sm sm:text-base transition-colors ${
@@ -21,8 +21,8 @@ export default function ServiceOptions({ selectedService, setSelectedService }: 
           }`}
         >
           {service.days} bilhetes - R${service.price.toFixed(2)} 💌
-        </button>
+        </p>
       ))}
     </div>
-  )
+  );
 }
