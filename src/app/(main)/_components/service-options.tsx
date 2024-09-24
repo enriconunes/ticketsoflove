@@ -1,7 +1,12 @@
+// export const services = [
+//   { days: 15, price: 7.90, priceId: 'price_1Q2H1sIMvVF3VKbOizrCrelU' },
+//   { days: 30, price: 12.90, priceId: 'price_1Q2H2MIMvVF3VKbO4jrnJQCB' },
+//   { days: 60, price: 15.90, priceId: 'price_1Q2H30IMvVF3VKbOWT45dQTW' },
+// ];
 export const services = [
-  { days: 15, price: 7.90, priceId: 'price_1Q2H1sIMvVF3VKbOizrCrelU' },
-  { days: 30, price: 12.90, priceId: 'price_1Q2H2MIMvVF3VKbO4jrnJQCB' },
-  { days: 60, price: 15.90, priceId: 'price_1Q2H30IMvVF3VKbOWT45dQTW' },
+  { days: 15, price: 7.90, priceId: 'price_1Q2gxXIMvVF3VKbO0qiDsDSJ' },
+  { days: 30, price: 12.90, priceId: 'price_1Q2gyxIMvVF3VKbOKcvyFYhP' },
+  { days: 60, price: 15.90, priceId: 'price_1Q2gzlIMvVF3VKbOY2Whi74S' },
 ];
 
 interface ServiceOptionsProps {
