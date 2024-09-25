@@ -17,13 +17,13 @@ export default function ServiceOptions({ selectedService, setSelectedService }: 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
       {services.map((service) => (
-        <button
+        <div
           key={service.days}
           onClick={() => setSelectedService(service.days)}
           onMouseEnter={() => setHoveredService(service.days)}
           onMouseLeave={() => setHoveredService(null)}
           className={`
-            relative p-6 text-left
+            relative p-6 text-left hover:cursor-pointer
             transition-all duration-300 ease-in-out
             bg-[#170A1C] border border-[#9C95DC]
             ${
@@ -52,7 +52,7 @@ export default function ServiceOptions({ selectedService, setSelectedService }: 
               }
             `}
           />
-        </button>
+        </div>
       ))}
     </div>
   );
