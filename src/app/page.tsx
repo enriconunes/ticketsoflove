@@ -114,7 +114,7 @@ export default function LandingPage() {
           <span className="font-bold">
             nós garantimos que ela só leia um por dia 
           </span>
-          <span className="text-white"> a partir de hoje 👀! Escolha a duração da sua surpresa e crie uma lembrança inesquecível. 💖</span>
+          <span className="text-white"> a partir de hoje 👀! Escolha a duração da sua surpresa e comece a criar uma lembrança inesquecível. 💖</span>
         </p>
         <AnimatedGradientTextDemo />
         {formError && (
