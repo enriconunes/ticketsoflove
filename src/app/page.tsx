@@ -8,24 +8,24 @@ import ServiceOptions, { services } from './(main)/_components/service-options'
 import MainForm from './(main)/_components/main-form'
 import TicketForms from './(main)/_components/ticket-forms'
 
-// Initialize Stripe with the public key
+// Inicializa o Stripe com a chave pública
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
-// Define the structure of our form data
+// Define a estrutura dos dados do formulário
 interface FormData {
   from: string;
   to: string;
   message: string;
   email: string;
   password: string;
-  [key: string]: string; // This allows for dynamic properties like ticket_1, ticket_2, etc.
+  [key: string]: string; // Isso permite propriedades dinâmicas como ticket_1, ticket_2, etc.
 }
 
 export default function LandingPage() {
-  // State to store the selected service (30, 60, or 100 days)
+  // Estado para armazenar o serviço selecionado (30, 60 ou 100 dias)
   const [selectedService, setSelectedService] = useState(30)
   
-  // Initialize react-hook-form
+  // Inicializa o react-hook-form
   const form = useForm<FormData>({
     mode: 'onSubmit',
     defaultValues: {
@@ -37,15 +37,15 @@ export default function LandingPage() {
     },
   })
 
-  // State to manage loading status during checkout
+  // Estado para gerenciar o status de carregamento durante o checkout
   const [loading, setLoading] = useState(false)
-  // State to manage form-wide error messages
+  // Estado para gerenciar mensagens de erro do formulário
   const [formError, setFormError] = useState<string | null>(null)
 
   const handleCheckout = async (formData: FormData) => {
-    setFormError(null) // Clear any previous errors
+    setFormError(null) // Limpa quaisquer erros anteriores
 
-    // Check for empty tickets
+    // Verifica se há tickets vazios
     const emptyTickets = Array.from({ length: selectedService }, (_, index) => index).filter(index => {
       const ticketValue = formData[`ticket_${index + 1}`];
       return !ticketValue || ticketValue.trim() === '';
@@ -58,10 +58,18 @@ export default function LandingPage() {
 
     setLoading(true)
     try {
-      // Find the price ID for the selected service
+      // Encontra o ID do preço para o serviço selecionado
       const selectedPriceId = services.find(s => s.days === selectedService)?.priceId
 
-      // Send data to server to create checkout session
+      // Filtra os tickets para incluir apenas os correspondentes ao plano selecionado
+      const filteredFormData = Object.entries(formData).reduce((acc, [key, value]) => {
+        if (!key.startsWith('ticket_') || parseInt(key.split('_')[1]) <= selectedService) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {} as FormData);
+
+      // Envia dados para o servidor para criar a sessão de checkout
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: {
@@ -69,21 +77,21 @@ export default function LandingPage() {
         },
         body: JSON.stringify({ 
           priceId: selectedPriceId,
-          formData: formData
+          formData: filteredFormData
         }),
       })
 
       const { sessionId } = await response.json()
       const stripe = await stripePromise
       
-      // Redirect to Stripe checkout
+      // Redireciona para o checkout do Stripe
       const { error } = await stripe!.redirectToCheckout({ sessionId })
 
       if (error) {
         console.error('Erro ao redirecionar para o checkout:', error)
         setFormError('Erro ao redirecionar para o checkout. Por favor, tente novamente.')
       } else {
-        // Remove information from local storage after successful redirect
+        // Remove as informações do localStorage após o redirecionamento bem-sucedido
         localStorage.removeItem('ticketsOfLove')
       }
     } catch (err) {
@@ -99,7 +107,7 @@ export default function LandingPage() {
         <Image src="/logo.png" alt="Tickets of Love" width={140} height={40} />
       </header>
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-xl sm:text-4xl font-bold text-[#2db8d7] mb-4">Proporcione um momento inesquecível para uma pessoa especial!</h1>
+        <h1 className="text-xl sm:text-4xl font-bold text-[#2db8d7] mb-4">Proporcione uma surpresa diária para uma pessoa especial!</h1>
         <p className="mb-6 sm:mb-8 text-white">
           Escreva bilhetes de amor para uma pessoa importante. Você escreve os bilhetes e{' '}
           <span className="font-semibold text-[#228CDB]">

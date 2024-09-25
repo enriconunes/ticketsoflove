@@ -19,7 +19,7 @@ export default function TicketForms({ form, ticketCount }: TicketFormsProps) {
     if (savedTickets) {
       const parsedTickets = JSON.parse(savedTickets)
       Object.entries(parsedTickets).forEach(([key, value]) => {
-        if (key.startsWith('ticket_')) {
+        if (key.startsWith('ticket_') && typeof value === 'string') {
           form.setValue(key, value)
         }
       })
@@ -38,12 +38,22 @@ export default function TicketForms({ form, ticketCount }: TicketFormsProps) {
 
   const handleSaveTicket = () => {
     if (openTicket !== null) {
-      form.setValue(`ticket_${openTicket + 1}`, tempTicketContent)
+      const trimmedContent = tempTicketContent.trim()
+      
+      if (trimmedContent !== "") {
+        form.setValue(`ticket_${openTicket + 1}`, trimmedContent)
+      } else {
+        form.unregister(`ticket_${openTicket + 1}`)
+      }
       
       const allTickets = form.getValues()
-      const ticketsToSave = Object.entries(allTickets)
-        .filter(([key]) => key.startsWith('ticket_'))
-        .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
+      const ticketsToSave: Record<string, string> = {}
+      
+      Object.entries(allTickets).forEach(([key, value]) => {
+        if (key.startsWith('ticket_') && typeof value === 'string' && value.trim() !== '') {
+          ticketsToSave[key] = value
+        }
+      })
       
       localStorage.setItem('ticketsOfLove', JSON.stringify(ticketsToSave))
       
@@ -56,7 +66,7 @@ export default function TicketForms({ form, ticketCount }: TicketFormsProps) {
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
         {Array.from({ length: ticketCount }).map((_, index) => {
           const ticketValue = form.watch(`ticket_${index + 1}`)
-          const isFilledOut = ticketValue && ticketValue.trim() !== ''
+          const isFilledOut = typeof ticketValue === 'string' && ticketValue.trim() !== ''
 
           return (
             <div
