@@ -8,6 +8,7 @@ import ServiceOptions, { services } from './(main)/_components/service-options'
 import MainForm from './(main)/_components/main-form'
 import TicketForms from './(main)/_components/ticket-forms'
 import { AnimatedGradientTextDemo } from './(main)/_components/animated-gradient-demol'
+import { Footer } from './(main)/_components/footer'
 
 // Inicializa o Stripe com a chave pública
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
@@ -135,6 +136,7 @@ export default function LandingPage() {
           </button>
         </form>
       </main>
+      <Footer />
     </div>
   )
 }
