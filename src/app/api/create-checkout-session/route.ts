@@ -38,8 +38,6 @@ export async function POST(request: Request) {
       throw new Error(`Maximum of ${MAX_TICKETS} tickets allowed`)
     }
 
-    console.log(formData)
-
     for (let i = 1; i <= ticketCount; i++) {
       if (typeof formData[`ticket_${i}`] !== 'string' || formData[`ticket_${i}`].trim() === '') {
         throw new Error(`Invalid ticket message for ticket ${i}`)
