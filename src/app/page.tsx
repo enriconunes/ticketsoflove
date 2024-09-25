@@ -107,7 +107,7 @@ export default function LandingPage() {
         <Image src="/logo.png" alt="Tickets of Love" width={140} height={40} />
       </header>
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-xl sm:text-4xl font-bold text-[#2db8d7] mb-4">Proporcione uma surpresa diária para uma pessoa especial!</h1>
+        <h1 className="text-2xl sm:text-4xl font-bold text-[#228CDB] mb-4">Proporcione uma surpresa diária para uma pessoa especial!</h1>
         <p className="mb-6 sm:mb-8 text-white">
           Escreva bilhetes de amor para uma pessoa importante. Você escreve os bilhetes e{' '}
           <span className="font-semibold text-[#228CDB]">
