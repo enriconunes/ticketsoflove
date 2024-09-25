@@ -94,21 +94,21 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6 md:p-8">
+    <div className="min-h-screen bg-[#170A1C] text-white p-4 sm:p-6 md:p-8">
       <header className="flex justify-between items-center mb-8">
         <Image src="/logo.png" alt="Tickets of Love" width={140} height={40} />
       </header>
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-bold text-red-500 mb-4">Surpreenda quem você ama!</h1>
-        <p className="mb-6 sm:mb-8">
-          Crie bilhetes de amor para uma pessoa especial. Você escreve os bilhetes e{' '}
-          <span className="font-medium text-red-200">
+        <h1 className="text-xl sm:text-4xl font-bold text-white mb-4">Proporcione um momento inesquecível para uma pessoa especial!</h1>
+        <p className="mb-6 sm:mb-8 text-white">
+          Escreva bilhetes de amor para uma pessoa importante. Você escreve os bilhetes e{' '}
+          <span className="font-semibold text-[#228CDB]">
             nós garantimos que ela só leia um por dia 
           </span>
-          <span> a partir de hoje 👀! Escolha a duração da sua surpresa e comece a expressar seu amor de forma única. 💖</span>
+          <span className="text-white"> a partir de hoje 👀! Escolha a duração da sua surpresa e comece a expressar seu amor de forma única. 💖</span>
         </p>
         {formError && (
-          <div className="bg-red-500 text-white p-3 rounded mb-4">
+          <div className="bg-[#C19AB7] text-[#170A1C] p-3 mb-4">
             {formError}
           </div>
         )}
@@ -118,7 +118,7 @@ export default function LandingPage() {
           <TicketForms form={form} ticketCount={selectedService} />
           <button 
             type="submit"
-            className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition-colors disabled:opacity-50"
+            className="w-full bg-[#0B7189] text-white py-2 hover:bg-[#228CDB] transition-colors disabled:opacity-50"
             disabled={loading}
           >
             {loading ? 'Processando...' : 'Finalizar surpresa 💳'}

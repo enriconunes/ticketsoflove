@@ -39,21 +39,25 @@ export function TicketCard({ number, message, revealDay }: TicketCardProps) {
 
   return (
     <div 
-      className={`bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg cursor-pointer transition-all duration-300 ${timeLeft === 'Disponível' ? 'hover:shadow-xl hover:scale-105' : 'opacity-75'}`}
+      className={`bg-[#170A1C] rounded-lg p-6 shadow-lg cursor-pointer transition-all duration-300 border border-[#9C95DC] ${
+        timeLeft === 'Disponível' 
+          ? 'hover:shadow-xl hover:scale-105 hover:border-[#228CDB]' 
+          : 'opacity-75'
+      }`}
       onClick={handleClick}
     >
       <div className="text-center">
-        <h3 className="text-xl font-bold text-white mb-2">Bilhete #{number}</h3>
+        <h3 className="text-xl font-bold text-[#C19AB7] mb-2">Bilhete #{number}</h3>
         {timeLeft === 'Disponível' ? (
           isRevealed ? (
-            <p className="text-white text-lg">{message}</p>
+            <p className="text-[#F3F7F0] text-lg">{message}</p>
           ) : (
-            <p className="">Clique para revelar 💌</p>
+            <p className="text-[#9C95DC]">Clique para revelar 💌</p>
           )
         ) : (
           <div>
-            <p className="mb-2">Desbloqueia em</p>
-            <p className="text-sm text-gray-400">{timeLeft} ⏱</p>
+            <p className="mb-2 text-[#9C95DC]">Desbloqueia em</p>
+            <p className="text-sm text-[#228CDB]">{timeLeft} ⏱</p>
           </div>
         )}
       </div>
