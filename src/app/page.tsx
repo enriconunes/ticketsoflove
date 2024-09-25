@@ -7,6 +7,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import ServiceOptions, { services } from './(main)/_components/service-options'
 import MainForm from './(main)/_components/main-form'
 import TicketForms from './(main)/_components/ticket-forms'
+import { AnimatedGradientTextDemo } from './(main)/_components/animated-gradient-demol'
 
 // Inicializa o Stripe com a chave pública
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
@@ -107,14 +108,15 @@ export default function LandingPage() {
         <Image src="/logo.png" alt="Tickets of Love" width={140} height={40} />
       </header>
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-2xl sm:text-4xl font-bold text-[#228CDB] mb-4">Proporcione uma surpresa diária para uma pessoa especial!</h1>
+        <h1 className="mb-2 text-2xl md:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-red-300">Proporcione uma surpresa diária para uma pessoa especial!</h1>
         <p className="mb-6 sm:mb-8 text-white">
           Escreva bilhetes de amor para uma pessoa importante. Você escreve os bilhetes e{' '}
-          <span className="font-semibold text-[#228CDB]">
+          <span className="font-bold">
             nós garantimos que ela só leia um por dia 
           </span>
           <span className="text-white"> a partir de hoje 👀! Escolha a duração da sua surpresa e comece a expressar seu amor de forma única. 💖</span>
         </p>
+        <AnimatedGradientTextDemo />
         {formError && (
           <div className="bg-[#C19AB7] text-[#170A1C] p-3 mb-4">
             {formError}
@@ -129,7 +131,7 @@ export default function LandingPage() {
             className="w-full bg-[#0B7189] text-white py-2 hover:bg-[#228CDB] transition-colors disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? 'Processando...' : 'Finalizar surpresa 💳'}
+            {loading ? 'Registrando bilhetes...' : 'Finalizar surpresa 💳'}
           </button>
         </form>
       </main>

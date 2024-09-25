@@ -128,7 +128,7 @@ export default function MainForm({ form }: MainFormProps) {
               }
             })}
             className="bg-[#9C95DC] bg-opacity-20 border-[#9C95DC] text-white placeholder-[#9C95DC] focus:border-[#228CDB] focus:ring-[#228CDB] pr-10"
-            placeholder="Somente quem tiver essa palavra poderá acessar a sua surpresa"
+            placeholder="Palavra usada para acessar a surpresa"
           />
           <button 
             type="button"
@@ -146,6 +146,7 @@ export default function MainForm({ form }: MainFormProps) {
           <p className="text-[#C19AB7] text-xs">{getErrorMessage(form.formState.errors.password)}</p>
         )}
       </div>
+      <p className="text-white text-sm">💭 Agora é só usar sua imaginação para preencher os bilhetes:</p>
     </div>
   )
 }
