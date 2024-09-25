@@ -110,11 +110,11 @@ export default function LandingPage() {
       <main className="max-w-4xl mx-auto">
         <h1 className="mb-2 text-2xl md:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-red-300">Proporcione uma surpresa diária para uma pessoa especial!</h1>
         <p className="mb-6 sm:mb-8 text-white">
-          Escreva bilhetes de amor para uma pessoa importante. Você escreve os bilhetes e{' '}
+          Escreva bilhetes especiais para uma pessoa importante. Você escreve os bilhetes e{' '}
           <span className="font-bold">
             nós garantimos que ela só leia um por dia 
           </span>
-          <span className="text-white"> a partir de hoje 👀! Escolha a duração da sua surpresa e comece a expressar seu amor de forma única. 💖</span>
+          <span className="text-white"> a partir de hoje 👀! Escolha a duração da sua surpresa e crie uma lembrança inesquecível. 💖</span>
         </p>
         <AnimatedGradientTextDemo />
         {formError && (
