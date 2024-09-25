@@ -63,7 +63,7 @@ export default function TermsPage() {
 
             <section>
               <h2 className="text-xl font-semibold text-white mb-2">10. Alterações nos Termos</h2>
-              <p>Podemos atualizar estes Termos de Uso periodicamente. Quando fizermos isso, revisaremos a data da "última atualização" no topo desta página. É sua responsabilidade revisar estes Termos de Uso periodicamente para se manter informado sobre quaisquer alterações.</p>
+              <p>Podemos atualizar estes Termos de Uso periodicamente. Quando fizermos isso, revisaremos a data da &ldquo;última atualização&rdquo; no topo desta página. É sua responsabilidade revisar estes Termos de Uso periodicamente para se manter informado sobre quaisquer alterações.</p>
             </section>
 
             <section>
